@@ -22,22 +22,13 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 
 function App() {
-  // const isAuthenticated = true;
-  // const user = {
-  //   name : 'danish',
-  //   role : 'user',
-  // };
-
-
-  // const isAuthenticated = false;
-  // const user = null;
 
   const {user, isAuthenticated, isLoading} = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(checkAuth());
-  },[dispatch]); 
+  },[dispatch]);
 
   if(isLoading) return <Skeleton className="w-[600px] bg-black h-[600px]" />
   ; 

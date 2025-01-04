@@ -29,8 +29,8 @@ function ShoppingListing() {
   }
 
   function handleFilter(getSectionId, getCurrentOption){
-    console.log(getSectionId)
-    console.log(getCurrentOption)
+    console.log(getSectionId);
+    console.log(getCurrentOption);
 
     let cpyFilters = {...filters};
     const indexOfCurrentSection = Object.keys(cpyFilters).indexOf(getSectionId);
@@ -42,7 +42,6 @@ function ShoppingListing() {
       }
     }else {
       const indexOfCurrentOption = cpyFilters[getSectionId].indexOf(getCurrentOption);
-
       if(indexOfCurrentOption === -1) cpyFilters[getSectionId].push(getCurrentOption)
         else cpyFilters[getSectionId].splice(indexOfCurrentOption, 1);
     }
@@ -62,7 +61,6 @@ function ShoppingListing() {
     console.log(queryParams,'queryParams');
     return queryParams.join('&');
   }
-
     
   function handleGetProductDetails(getCurrentProductId){
     console.log(getCurrentProductId);
@@ -90,13 +88,14 @@ function ShoppingListing() {
   },[])
 
   useEffect(() => {
+    console.log(filters, "filters for listing to get")
     if(filters && Object.keys(filters).length > 0 ){
       const createQueryString = createSearchParamHelper(filters);
+      console.log(createQueryString, "createQueryString after setting it")
       setSearchParams(new URLSearchParams(createQueryString));
     }
   },[filters])
 
-  
   //fetch list of products
   useEffect(() => {
     if(filters !== null && sort !== null) 
